@@ -38,9 +38,9 @@ namespace Address_Book
 
         public void display()
         {
-            foreach (Person item in list)
+            foreach (Person entry in list)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(entry);
             }
         }
         public void edit(String firstName)
@@ -73,21 +73,18 @@ namespace Address_Book
                             case 3:
                                 Console.WriteLine("enter new state");
                                 String state = Console.ReadLine();
-                                
                                 person.State = state;
                                 break;
 
                             case 4:
-                                Console.WriteLine("enter new phoneNo");
+                                Console.WriteLine("enter new phoneNumber");
                                 String phoneNumber = Console.ReadLine();
-                               
                                 person.PhoneNumber = phoneNumber;
                                 break;
 
                             case 5:
                                 Console.WriteLine("enter new zipCode");
                                 String zipCode = Console.ReadLine();
-                                
                                 person.ZipCode = zipCode;
                                 break;
 
@@ -99,6 +96,17 @@ namespace Address_Book
                     }
                 }
             }
+        }
+        public void delete(string firstName)
+        {
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].FirstName.Equals(firstName))
+                {
+                    list[i] = null;
+                }
+            }
+            Console.WriteLine("Your expected entry is deleted from records");
         }
     }
 }
