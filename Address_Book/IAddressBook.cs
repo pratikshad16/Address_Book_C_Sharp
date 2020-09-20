@@ -8,5 +8,6 @@ namespace Address_Book
     {
         public void add();
         public void display();
+        public void edit(String firstName);
     }
 }

@@ -27,10 +27,10 @@ namespace Address_Book
 
         public string LastName { get => lastName; set => lastName = value; }
         public string FirstName { get => firstName; set => firstName = value; }
-        public string Adderss { get => address; set => address = value; }
+        public string Address { get => address; set => address = value; }
         public string City { get => city; set => city = value; }
         public string State { get => state; set => state = value; }
-        public string PnoneNumber { get => phoneNumber; set => phoneNumber = value; }
+        public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public string ZipCode { get => zipCode; set => zipCode = value; }
 
 
