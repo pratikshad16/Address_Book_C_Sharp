@@ -12,6 +12,15 @@ namespace Address_Book
         {
             Console.WriteLine("Enter first name");
             String firstName = Console.ReadLine();
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i].FirstName.Equals(firstName))
+                {
+                    Console.WriteLine("Oops!! You entered the duplicate name");
+                    return;
+                }
+
+            }
 
             Console.WriteLine("Enter last name");
             String lastName = Console.ReadLine();
