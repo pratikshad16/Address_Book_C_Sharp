@@ -117,5 +117,17 @@ namespace Address_Book
             }
             Console.WriteLine("Your expected entry is deleted from records");
         }
+        public void sortByName()
+        {
+
+            list.Sort(this.Compare);
+            this.display();
+        }
+
+        public int Compare(Person x, Person y)
+        {
+            return x.FirstName.CompareTo(y.FirstName);
+
+        }
     }
 }
