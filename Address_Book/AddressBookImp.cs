@@ -117,7 +117,7 @@ namespace Address_Book
             }
             Console.WriteLine("Your expected entry is deleted from records");
         }
-        public void sortByName()
+        public void sort()
         {
 
             list.Sort(this.Compare);
@@ -126,8 +126,22 @@ namespace Address_Book
 
         public int Compare(Person x, Person y)
         {
-            return x.FirstName.CompareTo(y.FirstName);
-
+            Console.WriteLine("Enter choice for sorting:");
+            Console.WriteLine("1. FirstName 2. City 3. State 4. Zip");
+            String choice = Console.ReadLine();
+            int choice1 = Convert.ToInt32(choice);
+            switch (choice1)
+            {
+                case 1:
+                    return x.FirstName.CompareTo(y.FirstName);
+                case 2:
+                    return x.City.CompareTo(y.City);
+                case 3:
+                    return x.State.CompareTo(y.State);
+                case 4:
+                    return x.ZipCode.CompareTo(y.ZipCode);
+            }
+            return 0;
         }
     }
 }
