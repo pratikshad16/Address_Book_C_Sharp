@@ -13,7 +13,7 @@ namespace Address_Book
             while (check == true)
             {
                 Console.WriteLine("Welcome to Address Book Program");
-                Console.WriteLine("1.Add a person 2.Display a person 3. Edit a person 4. Delete a person 5. Sort a person");
+                Console.WriteLine("1.Add a person 2.Display a person 3. Edit a person 4. Delete a person 5. Sort a person 6. View a person");
                 String choice = Console.ReadLine();
                 int choice1 = Convert.ToInt32(choice);
 
@@ -38,6 +38,9 @@ namespace Address_Book
                         break;
                     case 5:
                         book.sort();
+                        break;
+                    case 6:
+                        book.view();
                         break;
                 }
             }

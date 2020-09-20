@@ -143,5 +143,35 @@ namespace Address_Book
             }
             return 0;
         }
+        public void view()
+        {
+            Console.WriteLine("Enter your choice for viewing: ");
+            Console.WriteLine("1. City 2. State");
+            String choice = Console.ReadLine();
+            int choice1 = Convert.ToInt32(choice);
+            switch (choice1) {
+                case 1:
+                    Console.WriteLine("Enter your city");
+                    String city = Console.ReadLine();
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        if (list[i].City.Equals(city))
+                            Console.WriteLine(list[i]);
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Enter your state");
+                    String state = Console.ReadLine();
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        if (list[i].State.Equals(state))
+                            Console.WriteLine(list[i]);
+                    }
+                    break;
+            }
+        }
+
     }
-}
+
+        }
+    
