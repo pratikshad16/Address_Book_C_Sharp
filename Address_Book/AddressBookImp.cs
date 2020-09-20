@@ -149,7 +149,8 @@ namespace Address_Book
             Console.WriteLine("1. City 2. State");
             String choice = Console.ReadLine();
             int choice1 = Convert.ToInt32(choice);
-            switch (choice1) {
+            switch (choice1)
+            {
                 case 1:
                     Console.WriteLine("Enter your city");
                     String city = Console.ReadLine();
@@ -170,8 +171,36 @@ namespace Address_Book
                     break;
             }
         }
-
-    }
+        public void search()
+        {
+            Console.WriteLine("Enter your choice for searching: ");
+            Console.WriteLine("1. City 2. State");
+            String choice = Console.ReadLine();
+            int choice1 = Convert.ToInt32(choice);
+            switch (choice1)
+            {
+                case 1:
+                    Console.WriteLine("Enter your name");
+                    String NameToSearchInCity = Console.ReadLine();
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        if (list[i].FirstName.Equals(NameToSearchInCity))
+                            Console.WriteLine(list[i].City);
+                    }
+                    break;
+                case 2:
+                    Console.WriteLine("Enter your name");
+                    String nameToSearchInState = Console.ReadLine();
+                    for (int i = 0; i < list.Count; i++)
+                    {
+                        if (list[i].FirstName.Equals(nameToSearchInState))
+                            Console.WriteLine(list[i].State);
+                    }
+                    break;
+            }
 
         }
+
+    }
+}
     

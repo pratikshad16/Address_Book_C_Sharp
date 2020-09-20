@@ -12,5 +12,6 @@ namespace Address_Book
         public void delete(String firstName);
         public void sort();
         public void view();
+        public void search();
     }
 }
