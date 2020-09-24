@@ -1,134 +1,171 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="AddressBookImp.cs" company="CompanyName">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace Address_Book
 {
-    class AddressBookImp : IAddressBook
+    using System;
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// AddressBookImp class
+    /// </summary>
+    public class AddressBookImp : IAddressBook
     {
-        Person person = null;
-        List<Person> list = new List<Person>();
-        public void add()
+        /// <summary>
+        /// Created a list.
+        /// </summary>
+        private readonly List<Person> list = new List<Person>();
+
+        /// <summary>
+        /// Assign person equals null. 
+        /// </summary>
+        private Person person = null;
+
+        /// <summary>
+        /// Add method.
+        /// </summary>
+        public void Add()
         {
             Console.WriteLine("Enter first name");
-            String firstName = Console.ReadLine();
-            for (int i = 0; i < list.Count; i++)
+            string firstName = Console.ReadLine();
+            for (int i = 0; i < this.list.Count; i++)
             {
-                if (list[i].FirstName.Equals(firstName))
+                if (this.list[i].FirstName.Equals(firstName))
                 {
                     Console.WriteLine("Oops!! You entered the duplicate name");
-                    return;
                 }
-
             }
 
             Console.WriteLine("Enter last name");
-            String lastName = Console.ReadLine();
+            string lastName = Console.ReadLine();
 
             Console.WriteLine("Enter address");
-            String address = Console.ReadLine();
+            string address = Console.ReadLine();
 
             Console.WriteLine("Enter city");
-            String city = Console.ReadLine();
+            string city = Console.ReadLine();
 
             Console.WriteLine("Enter state");
-            String state = Console.ReadLine();
+            string state = Console.ReadLine();
 
             Console.WriteLine("Enter phoneNumber");
-            String phoneNumber = Console.ReadLine();
+            string phoneNumber = Console.ReadLine();
 
             Console.WriteLine("Enter Zip Code");
-            String zipCode = Console.ReadLine();
+            string zipCode = Console.ReadLine();
 
-            person = new Person(firstName, lastName, address, city, state, phoneNumber, zipCode);
-            list.Add(person);
-
+            this.person = new Person(firstName, lastName, address, city, state, phoneNumber, zipCode);
+            this.list.Add(this.person);
         }
 
-        public void display()
+        /// <summary>
+        /// Display method.
+        /// </summary>
+        public void Display()
         {
-            foreach (Person entry in list)
+            foreach (Person entry in this.list)
             {
                 Console.WriteLine(entry);
             }
         }
-        public void edit(String firstName)
+
+        /// <summary>
+        /// Edit method.
+        /// </summary>
+        /// <param name="firstName">first name.</param>
+        public void Edit(string firstName)
         {
             int check = 0;
-            for (int i = 0; i < list.Count; i++)
+            for (int i = 0; i < this.list.Count; i++)
             {
-                if (list[i].FirstName.Equals(firstName))
+                if (this.list[i].FirstName.Equals(firstName))
                 {
                     while (check == 0)
                     {
-                        Person person = list[i];
+                        Person person = this.list[i];
                         Console.WriteLine(person);
                         Console.WriteLine("Enter your choice for editing: ");
                         Console.WriteLine("1.Address 2.City 3.State 4.PhoneNumber 5.Zip  6.Exit");
-                        String choice = Console.ReadLine();
+                        string choice = Console.ReadLine();
                         int choice1 = Convert.ToInt32(choice);
                         switch (choice1)
                         {
                             case 1:
                                 Console.WriteLine("enter new address");
-                                String address = Console.ReadLine();
+                                string address = Console.ReadLine();
                                 person.Address = address;
                                 break;
                             case 2:
                                 Console.WriteLine("enter new city");
-                                String city = Console.ReadLine();
+                                string city = Console.ReadLine();
                                 person.City = city;
                                 break;
                             case 3:
                                 Console.WriteLine("enter new state");
-                                String state = Console.ReadLine();
+                                string state = Console.ReadLine();
                                 person.State = state;
                                 break;
 
                             case 4:
                                 Console.WriteLine("enter new phoneNumber");
-                                String phoneNumber = Console.ReadLine();
+                                string phoneNumber = Console.ReadLine();
                                 person.PhoneNumber = phoneNumber;
                                 break;
 
                             case 5:
                                 Console.WriteLine("enter new zipCode");
-                                String zipCode = Console.ReadLine();
+                                string zipCode = Console.ReadLine();
                                 person.ZipCode = zipCode;
                                 break;
 
                             case 6:
                                 check = 1;
                                 break;
-
                         }
                     }
                 }
             }
         }
-        public void delete(string firstName)
+
+        /// <summary>
+        /// Delete method.
+        /// </summary>
+        /// <param name="firstName">first name.</param>
+        public void Delete(string firstName)
         {
-            for (int i = 0; i < list.Count; i++)
+            for (int i = 0; i < this.list.Count; i++)
             {
-                if (list[i].FirstName.Equals(firstName))
+                if (this.list[i].FirstName.Equals(firstName))
                 {
-                    list[i] = null;
+                    this.list[i] = null;
                 }
             }
+
             Console.WriteLine("Your expected entry is deleted from records");
         }
-        public void sort()
-        {
 
-            list.Sort(this.Compare);
-            this.display();
+        /// <summary>
+        /// Sort method.
+        /// </summary>
+        public void Sort()
+        {
+            this.list.Sort(this.Compare);
+            this.Display();
         }
 
+        /// <summary>
+        /// Compare method.
+        /// </summary>
+        /// <param name="x">first person name.</param>
+        /// <param name="y">second person name.</param>
+        /// <returns>comparison result.</returns>
         public int Compare(Person x, Person y)
         {
             Console.WriteLine("Enter choice for sorting:");
             Console.WriteLine("1. FirstName 2. City 3. State 4. Zip");
-            String choice = Console.ReadLine();
+            string choice = Console.ReadLine();
             int choice1 = Convert.ToInt32(choice);
             switch (choice1)
             {
@@ -140,67 +177,87 @@ namespace Address_Book
                     return x.State.CompareTo(y.State);
                 case 4:
                     return x.ZipCode.CompareTo(y.ZipCode);
+                default:
+                    break;
             }
+
             return 0;
         }
-        public void view()
+
+        /// <summary>
+        /// View method.
+        /// </summary>
+        public void View()
         {
             Console.WriteLine("Enter your choice for viewing: ");
             Console.WriteLine("1. City 2. State");
-            String choice = Console.ReadLine();
+            string choice = Console.ReadLine();
             int choice1 = Convert.ToInt32(choice);
             switch (choice1)
             {
                 case 1:
                     Console.WriteLine("Enter your city");
-                    String city = Console.ReadLine();
-                    for (int i = 0; i < list.Count; i++)
+                    string city = Console.ReadLine();
+                    for (int i = 0; i < this.list.Count; i++)
                     {
-                        if (list[i].City.Equals(city))
-                            Console.WriteLine(list[i]);
+                        if (this.list[i].City.Equals(city))
+                        {
+                            Console.WriteLine(this.list[i]);
+                        }
                     }
+
                     break;
                 case 2:
                     Console.WriteLine("Enter your state");
-                    String state = Console.ReadLine();
-                    for (int i = 0; i < list.Count; i++)
+                    string state = Console.ReadLine();
+                    for (int i = 0; i < this.list.Count; i++)
                     {
-                        if (list[i].State.Equals(state))
-                            Console.WriteLine(list[i]);
+                        if (this.list[i].State.Equals(state))
+                        {
+                            Console.WriteLine(this.list[i]);
+                        }
                     }
+
                     break;
             }
         }
-        public void search()
+
+        /// <summary>
+        /// Search method.
+        /// </summary>
+        public void Search()
         {
             Console.WriteLine("Enter your choice for searching: ");
             Console.WriteLine("1. City 2. State");
-            String choice = Console.ReadLine();
+            string choice = Console.ReadLine();
             int choice1 = Convert.ToInt32(choice);
             switch (choice1)
             {
                 case 1:
                     Console.WriteLine("Enter your name");
-                    String NameToSearchInCity = Console.ReadLine();
-                    for (int i = 0; i < list.Count; i++)
+                    string nameToSearchInCity = Console.ReadLine();
+                    for (int i = 0; i < this.list.Count; i++)
                     {
-                        if (list[i].FirstName.Equals(NameToSearchInCity))
-                            Console.WriteLine(list[i].City);
+                        if (this.list[i].FirstName.Equals(nameToSearchInCity))
+                        {
+                            Console.WriteLine(this.list[i].City);
+                        }
                     }
+
                     break;
                 case 2:
                     Console.WriteLine("Enter your name");
-                    String nameToSearchInState = Console.ReadLine();
-                    for (int i = 0; i < list.Count; i++)
+                    string nameToSearchInState = Console.ReadLine();
+                    for (int i = 0; i < this.list.Count; i++)
                     {
-                        if (list[i].FirstName.Equals(nameToSearchInState))
-                            Console.WriteLine(list[i].State);
+                        if (this.list[i].FirstName.Equals(nameToSearchInState))
+                        {
+                            Console.WriteLine(this.list[i].State);
+                        }
                     }
+
                     break;
             }
-
         }
-
     }
-}
-    
+}   

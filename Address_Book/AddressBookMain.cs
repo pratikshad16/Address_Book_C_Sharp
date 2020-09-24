@@ -1,53 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿//-----------------------------------------------------------------------
+// <copyright file="AddressBookMain.cs" company="CompanyName">
+//     Company copyright tag.
+// </copyright>
+//-----------------------------------------------------------------------
 namespace Address_Book
 {
-    class AddressBookMain
+    using System;
+
+    /// <summary>
+    /// Address Book Main class
+    /// </summary>
+    public class AddressBookMain
     {
-         static void Main(String[] args)
+        /// <summary>
+        /// main method
+        /// </summary>
+        /// <param name="args">String argument</param>
+        public static void Main(string[] args)
         {
             IAddressBook book = new AddressBookImp();
-            Boolean check = true;
+            bool check = true;
             while (check == true)
             {
                 Console.WriteLine("Welcome to Address Book Program");
                 Console.WriteLine("1.Add a person 2.Display a person 3. Edit a person 4. Delete a person 5. Sort a person 6. View a person 7. Search a person");
-                String choice = Console.ReadLine();
+                string choice = Console.ReadLine();
                 int choice1 = Convert.ToInt32(choice);
 
                 switch (choice1)
                 {
                     case 1:
-                        book.add();
+                        book.Add();
                         break;
 
                     case 2:
-                        book.display();
+                        book.Display();
                         break;
                     case 3:
                         Console.WriteLine("Enter firstName");
-                        String name = Console.ReadLine();
-                        book.edit(name);
+                        string name = Console.ReadLine();
+                        book.Edit(name);
                         break;
                     case 4:
                         Console.WriteLine("Enter firstName");
-                        String nameForDeletion = Console.ReadLine();
-                        book.delete(nameForDeletion);
+                        string nameForDeletion = Console.ReadLine();
+                        book.Delete(nameForDeletion);
                         break;
                     case 5:
-                        book.sort();
+                        book.Sort();
                         break;
                     case 6:
-                        book.view();
+                        book.View();
                         break;
                     case 7:
-                        book.search();
+                        book.Search();
                         break;
                 }
             }
         }
     }
 }
-
